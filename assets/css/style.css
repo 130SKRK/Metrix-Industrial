@@ -1,0 +1,586 @@
+/* =======================================================
+   RESET E VARIÁVEIS GLOBAIS
+   ======================================================= */
+:root {
+    /* Paleta de Cores definida pelo cliente */
+    --cor-fundo: #ffffff;
+    --cor-primaria: #29712c;      /* Verde Metrix */
+    --cor-texto: #4b4f56;         /* Cinza Texto */
+    --cor-escura: #14171b;        /* Preto Metrix */
+    --cor-cinza-claro: #f4f4f4;   
+    
+    /* Configurações de Espaçamento e Tipografia */
+    --fonte-padrao: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --largura-maxima: 1200px;
+    --transicao: all 0.3s ease;
+    
+    /* Altura aproximada do cabeçalho para cálculos de scroll */
+    --altura-header: 100px; 
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    /* IMPORTANTE: Isso impede que o menu fixo cubra o título da seção ao clicar */
+    scroll-padding-top: var(--altura-header); 
+}
+
+body {
+    font-family: var(--fonte-padrao);
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: var(--largura-maxima);
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* =======================================================
+   CABEÇALHO (HEADER)
+   ======================================================= */
+header {
+    background-color: var(--cor-fundo);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 10px 0;
+    height: var(--altura-header); /* Define altura fixa para consistência */
+    display: flex; /* Para centralizar verticalmente o conteúdo interno */
+    align-items: center;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 70px; /* Leve ajuste para caber bem no header de 100px */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--cor-escura);
+    font-weight: 600;
+    transition: var(--transicao);
+    font-size: 0.95rem;
+}
+
+nav a:hover {
+    color: var(--cor-primaria);
+}
+
+.btn-destaque {
+    border: 2px solid var(--cor-primaria);
+    padding: 8px 20px;
+    border-radius: 5px;
+    color: var(--cor-primaria);
+}
+
+.btn-destaque:hover {
+    background-color: var(--cor-primaria);
+    color: #fff;
+}
+
+/* =======================================================
+   COMPONENTES GLOBAIS
+   ======================================================= */
+/* REGRA DE OURO PARA SEÇÕES FULL SCREEN:
+   min-height: 100vh -> Garante que ocupe 100% da altura da tela
+   display: flex -> Habilita alinhamento
+   align-items: center -> Centraliza o conteúdo verticalmente
+*/
+section {
+    min-height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px 0; /* Padding menor pois já tem altura total */
+    border-bottom: 1px solid #eee; /* Separador sutil opcional */
+}
+
+h2, h3, h4 {
+    color: var(--cor-primaria);
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+p {
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: var(--cor-primaria);
+    color: #fff;
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: var(--transicao);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary:hover {
+    background-color: #1e5520;
+    transform: translateY(-2px);
+}
+
+/* =======================================================
+   SEÇÃO HERO
+   ======================================================= */
+.hero .container {
+    position: relative;
+    z-index: 3;
+}
+
+/* O container do vídeo fica atrás de tudo */
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Nível mais baixo */
+}
+
+.video-background video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Faz o vídeo preencher a tela sem distorcer (corta as bordas se necessário) */
+}
+
+/* Camada escura semitransparente em cima do vídeo */
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* 60% de preto para escurecer o vídeo */
+    z-index: 2;
+}
+
+.hero {
+    position: relative; /* Necessário para posicionar o vídeo absoluto dentro dele */
+    overflow: hidden;   /* Impede que o vídeo saia da seção */
+    color: #fff;        /* Texto vira branco para contrastar com o vídeo/overlay */
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero h2 {
+    font-size: 3.5rem; /* Aumentei um pouco para impacto full screen */
+    line-height: 1.1;
+    color: var(--cor-fundo);
+    margin-bottom: 25px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Sombra para leitura perfeita */
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 35px;
+    color: #f0f0f0;
+}
+
+/* =======================================================
+   SEÇÃO SOBRE
+   ======================================================= */
+.sobre {
+    background-color: #fafafa;
+}
+
+.sobre .container {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.sobre-texto, .sobre-imagem {
+    flex: 1;
+}
+
+.sobre h3 {
+    font-size: 2.5rem;
+}
+
+.sobre-imagem img {
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    max-height: 80vh; /* Garante que a imagem não fique maior que a tela */
+    object-fit: cover;
+}
+
+/* =======================================================
+   SEÇÃO SERVIÇOS
+   ======================================================= */
+.servicos {
+    text-align: center;
+}
+
+.servicos h3 {
+    font-size: 2.5rem;
+}
+
+.subtitulo {
+    font-size: 1.1rem;
+    color: var(--cor-texto);
+    margin-bottom: 60px;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    text-align: left;
+}
+
+.card {
+    background: #fff;
+    padding: 40px 30px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    transition: var(--transicao);
+    border-bottom: 4px solid var(--cor-primaria);
+    
+    /* Centraliza o conteúdo do card */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* ESTILO DOS ÍCONES NOVOS */
+.card i {
+    font-size: 3rem; /* Tamanho grande do ícone */
+    color: var(--cor-primaria);
+    margin-bottom: 25px; /* Espaço entre ícone e título */
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.card h4 {
+    color: var(--cor-escura);
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+/* =======================================================
+   SEÇÃO CONTATO
+   ======================================================= */
+.contato {
+    background-color: #fff;
+}
+
+.contato h3 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+}
+
+.contato-wrapper {
+    display: flex;
+    gap: 50px;
+    justify-content: space-between;
+}
+
+.info-direta {
+    flex: 1;
+    background-color: var(--cor-primaria);
+    color: #fff;
+    padding: 50px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-contato {
+    flex: 2;
+}
+
+.campo {
+    margin-bottom: 20px;
+}
+
+.campo label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--cor-escura);
+}
+
+.campo input, 
+.campo textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: var(--transicao);
+    background-color: #f9f9f9;
+}
+
+.campo input:focus, 
+.campo textarea:focus {
+    border-color: var(--cor-primaria);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(41, 113, 44, 0.1);
+    background-color: #fff;
+}
+
+/* =======================================================
+   RODAPÉ
+   ======================================================= */
+footer {
+    background-color: var(--cor-escura);
+    color: #fff;
+    padding: 30px 0;
+    /* Footer não precisa ser full screen, ele é o encerramento */
+}
+
+footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.redes-sociais {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.redes-sociais a {
+    color: #fff;
+    opacity: 0.8;
+}
+
+.redes-sociais a:hover {
+    opacity: 1;
+    color: var(--cor-primaria);
+}
+
+/* =======================================================
+   RESPONSIVIDADE E MENU MOBILE (CORRIGIDO)
+   ======================================================= */
+
+/* 1. Configuração do Botão Hamburger (Padrão) */
+.menu-mobile-btn {
+    display: none; /* Escondido no Desktop */
+    background: none;
+    border: none;
+    font-size: 2rem; /* Aumentei um pouco para facilitar o toque */
+    cursor: pointer;
+    color: var(--cor-escura);
+    padding: 5px; /* Área de toque melhor */
+    z-index: 1100; /* Garante que o botão fique acima de tudo */
+}
+
+/* 2. Regras para Celulares/Tablets */
+@media (max-width: 768px) {
+    
+    /* --- Ajustes Gerais de Texto e Layout --- */
+    .hero h2 {
+        font-size: 2.2rem;
+    }
+
+    /* --- CABEÇALHO NO MOBILE --- */
+    header {
+        /* Mantemos sticky para o menu sair de baixo dele corretamente */
+        position: sticky; 
+        top: 0;
+        height: var(--altura-header); /* Altura fixa é importante aqui */
+    }
+
+    header .container {
+        /* IMPORTANTE: Mantém Row para Logo e Botão ficarem lado a lado */
+        flex-direction: row; 
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Mostra o botão hamburger */
+    .menu-mobile-btn {
+        display: block;
+    }
+
+    /* --- MENU (ÁREA QUE DESLIZA) --- */
+    .nav-menu {
+        position: fixed;
+        /* O menu começa exatamente onde o header termina */
+        top: var(--altura-header); 
+        left: -100%; /* Escondido fora da tela */
+        width: 100%;
+        /* Altura é o total da tela menos a altura do header */
+        height: calc(100vh - var(--altura-header)); 
+        
+        background-color: var(--cor-fundo);
+        transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Animação mais fluida */
+        
+        /* Centraliza os links no meio da tela */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        z-index: 1000;
+        border-top: 1px solid #eee; /* Linha sutil separando do header */
+        
+        /* Garante que o conteúdo não vaze se a tela for muito pequena na altura */
+        overflow-y: auto; 
+    }
+
+    /* Classe ativa (adicionada pelo JS) */
+    .nav-menu.ativo {
+        left: 0;
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        gap: 40px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .nav-menu a {
+        font-size: 1.5rem;
+        display: block;
+        padding: 10px;
+    }
+
+    /* --- OUTROS AJUSTES DE SEÇÃO --- */
+    .sobre .container,
+    .contato-wrapper,
+    footer .container {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .sobre-imagem {
+        order: -1; /* Imagem acima do texto */
+        margin-bottom: 20px;
+    }
+    
+    .card i {
+        font-size: 2.5rem;
+    }
+}
+
+/* =======================================================
+   BOTÃO VOLTAR AO TOPO (Mantido igual)
+   ======================================================= */
+#btn-topo {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--cor-primaria);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+#btn-topo.mostrar {
+    opacity: 1;
+    visibility: visible;
+}
+
+#btn-topo:hover {
+    background-color: #1e5520;
+    transform: translateY(-5px);
+}
+
+/* =======================================================
+   ANIMATIONS (Coloque isso NO FINAL do arquivo, fora de @media)
+   ======================================================= */
+
+/* 1. Efeito no Header ao Rolar */
+header.scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    padding: 5px 0;
+    transition: all 0.3s ease;
+}
+
+/* 2. Link Ativo no Menu */
+.nav-menu a.active-link {
+    color: var(--cor-primaria);
+    position: relative;
+}
+
+.nav-menu a.active-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--cor-primaria);
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+/* 3. SCROLL REVEAL (O Segredo da Animação) */
+
+/* Estado inicial (O JavaScript adiciona esta classe) */
+.reveal-hidden {
+    opacity: 0;
+    transform: translateX(50px); /* Empurra o elemento para baixo */
+    transition: all 1s cubic-bezier(0.5, 0, 0, 1); /* Tempo da animação */
+}
+
+/* Estado final (O JavaScript troca para esta classe quando aparece na tela) */
+.reveal-visible {
+    opacity: 1;
+    transform: translateX(0); /* Traz de volta para o lugar original */
+}

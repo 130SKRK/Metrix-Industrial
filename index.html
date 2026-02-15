@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metrix Industrial</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon-metrix-principal.png">
+    
+    <script src="assets/js/script.js" defer></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+    <header id="topo">
+        <div class="container">
+            <div class="logo">
+                <img src="assets/img/metrix logo-sem-fundo.png" alt="metrix-industrial-logo">
+            </div>
+
+            <button class="menu-mobile-btn" aria-label="Abrir Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#sobre">Sobre Nós</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#contato" class="btn-destaque">Fale Conosco</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <section id="inicio" class="hero">
+            <div class="video-background">
+                <video autoplay muted loop playsinline>
+                    <source src="assets/videos/video-teste.mp4" type="video/mp4">
+                    Seu navegador não suporta vídeos HTML5.
+                </video>
+                <div class="video-overlay"></div>
+            </div>
+
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Eficiência e Inovação para sua Indústria</h2>
+                    <p>Especialistas em automação industrial, manutenção de painéis e otimização de processos produtivos.</p>
+                    <a href="#contato" class="btn-primary">Solicitar Orçamento</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre" class="sobre">
+             <div class="container">
+                <div class="sobre-texto">
+                    <h3>Quem Somos</h3>
+                    <p>Somos uma empresa dedicada a elevar o padrão tecnológico da indústria local. Com foco em redução de custos e aumento de produtividade, oferecemos soluções personalizadas em automação e manutenção elétrica.</p>
+                    <p>Nosso compromisso é garantir que sua linha de produção não pare.</p>
+                </div>
+                <div class="sobre-imagem">
+                    <img src="assets/img/tecnico - Copia.png" alt="Técnico trabalhando em painel elétrico" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <section id="servicos" class="servicos">
+             <div class="container">
+                <h3>Nossas Especialidades</h3>
+                <p class="subtitulo">Soluções técnicas para desafios industriais</p>
+
+                <div class="cards-grid">
+                    
+                    <div class="card">
+                        <i class="fa-solid fa-robot"></i>
+                        <h4>Automação Industrial</h4>
+                        <p>Programação de CLPs, IHMs e integração de sistemas supervisórios.</p>
+                    </div>
+
+                    <div class="card">
+                        <i class="fa-solid fa-bolt"></i>
+                        <h4>Manutenção Elétrica</h4>
+                        <p>Manutenção preventiva e corretiva em painéis e comandos elétricos.</p>
+                    </div>
+
+                    <div class="card">
+                        <i class="fa-solid fa-clipboard-check"></i>
+                        <h4>Consultoria Técnica</h4>
+                        <p>Análise de eficiência energética e modernização de equipamentos (Retrofit).</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="contato">
+            <div class="container">
+                <h3>Entre em Contato</h3>
+                
+                <div class="contato-wrapper">
+                    <div class="info-direta">
+                        <p><strong>Telefone/WhatsApp:</strong> (XX) 99999-9999</p>
+                        <p><strong>Email:</strong> contato@suaempresa.com.br</p>
+                        <p><strong>Localização:</strong> Cidade, Estado</p>
+                    </div>
+
+                    <form action="#" method="POST" class="form-contato">
+                        <div class="campo">
+                            <label for="nome">Nome Completo</label>
+                            <input type="text" id="nome" name="nome" required placeholder="Digite seu nome">
+                        </div>
+                        
+                        <div class="campo">
+                            <label for="email">E-mail Corporativo</label>
+                            <input type="email" id="email" name="email" required placeholder="seu@email.com">
+                        </div>
+
+                        <div class="campo">
+                            <label for="mensagem">Como podemos ajudar?</label>
+                            <textarea id="mensagem" name="mensagem" rows="5" required placeholder="Descreva sua necessidade..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-primary">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Metrix Industrial. Todos os direitos reservados.</p>
+            <ul class="redes-sociais">
+                <li><a href="#">LinkedIn</a></li>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">Email</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <button id="btn-topo" aria-label="Voltar ao topo">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+</body>
+</html>
