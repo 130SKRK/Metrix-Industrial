@@ -18,6 +18,12 @@
     --altura-header: 100px; 
 }
 
+html, body {
+    width: 100%;
+    overflow-x: hidden; /* O SEGREDO: Corta qualquer coisa que tente sair da tela lateralmente */
+    position: relative; /* Ajuda a manter a estrutura fixa */
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -608,4 +614,5 @@ header.scrolled {
     transform: translateX(0); /* Traz de volta para o lugar original */
 
 }
+
 
