@@ -502,7 +502,29 @@ footer .container {
     .card i {
         font-size: 2.5rem;
     }
-}
+/* CORREÇÃO DO ESTOURO DOS CARDS */
+    .cards-grid {
+        /* Muda de 'minmax(300px)' para '1fr' (1 fração do espaço disponível) */
+        grid-template-columns: 1fr; 
+        
+        /* Reduz um pouco o espaçamento entre cards para caber melhor */
+        gap: 20px; 
+        
+        /* Garante que o grid não seja maior que a largura da tela */
+        width: 100%; 
+        margin: 0 auto;
+    }
+
+    .card {
+        /* Garante que o card respeite o padding interno */
+        width: 100%; 
+        box-sizing: border-box; /* Essencial para padding não somar na largura */
+    }
+
+    /* Ajuste extra para telas muito pequenas (iPhone SE, Galaxy Fold) */
+    .container {
+        padding: 0 15px; /* Reduz um pouco o padding lateral global */
+    }
 
 /* =======================================================
    BOTÃO VOLTAR AO TOPO (Mantido igual)
@@ -583,4 +605,5 @@ header.scrolled {
 .reveal-visible {
     opacity: 1;
     transform: translateX(0); /* Traz de volta para o lugar original */
+
 }
