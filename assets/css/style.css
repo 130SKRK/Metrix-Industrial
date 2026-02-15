@@ -502,6 +502,7 @@ footer .container {
     .card i {
         font-size: 2.5rem;
     }
+   
 /* CORREÇÃO DO ESTOURO DOS CARDS */
     .cards-grid {
         /* Muda de 'minmax(300px)' para '1fr' (1 fração do espaço disponível) */
@@ -607,3 +608,4 @@ header.scrolled {
     transform: translateX(0); /* Traz de volta para o lugar original */
 
 }
+
